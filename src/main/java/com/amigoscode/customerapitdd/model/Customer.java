@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
-@JsonIgnoreProperties(allowGetters = true)
+@JsonIgnoreProperties(value= {"id"}, allowGetters = true)       // setId from client (POST, PUT) is not allowed
 public class Customer {
 
     @Id
