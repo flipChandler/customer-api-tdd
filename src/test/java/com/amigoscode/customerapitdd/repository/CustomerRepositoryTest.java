@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @DataJpaTest(
-        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"}
+        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"}    // annotations of validation will be triggered when running the unit tests
 )
 class CustomerRepositoryTest {
 
@@ -43,10 +43,10 @@ class CustomerRepositoryTest {
         String phoneNumber = "0000";
 
         // When
-        Optional<Customer> optionalCustomer = underTest.selectCustomerByPhoneNumber(phoneNumber);
+        Optional<Customer> optional = underTest.selectCustomerByPhoneNumber(phoneNumber);
 
         // Then
-        Assertions.assertThat(optionalCustomer).isNotPresent();
+        Assertions.assertThat(optional).isNotPresent();
     }
 
     @Test
